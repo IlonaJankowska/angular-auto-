@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>
+    AutoKsiegowy
+  </h1>
+<h2>Lista wydatków</h2>
+  <table class="table">
+    <tr>
+        <th>Kategoria</th>
+        <th>Data</th>
+        <th>Kwota</th>
+        <th>Opis</th>
+        <th>litrów/Km</th>
+    </tr>
+
+<tr *ngFor="let wydatek of wydatki">
+    <td>{{wydatek.kategoria}}</td>
+    <td>{{wydatek.data | date:'dd.MM.yyyy'}}</td>
+    <td class="text-sm-right">{{wydatek.kwota | number:'1.2-2'}} zł</td>
+    <td>{{wydatek.opis}}</td>
+    <td *ngIf="wydatek.ileLitrow && wydatek.ileKm && wydatek.kategoria=='Tankowanie'">{{wydatek.ileLitrow | number:'1.1-1'}}L/{{wydatek.ileKm}}KM</td>
+    <td *ngIf="wydatek.ileLitrow && wydatek.ileKm==undefined && wydatek.kategoria=='Tankowanie'">{{wydatek.ileLitrow | number:'1.1-1'}}</td>
+    <td *ngIf="wydatek.ileKm && wydatek.ileLitrow==undefined && wydatek.kategoria=='Tankowanie'">{{wydatek.ileKm}}KM</td>
+</tr>
+
+</table>
+
+</div>
